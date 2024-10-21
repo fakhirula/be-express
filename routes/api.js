@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
+const MoviesController = require('../controllers/MoviesController');
 
 router.get("/", (req, res) => {
   res.send("Hello Express");
 });
 
 // endpoint
-router.get("/movies", (req, res) => {
-  res.send("Tampilkan seluruh data movie");
-});
+router.get('/movies', MoviesController.index);
+
+router.get('/movies/:id', MoviesController.show);
 
 router.post('/movies', (req, res) => {
   res.send('Mendapatkan POST request')
