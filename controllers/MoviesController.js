@@ -16,18 +16,18 @@ class MoviesController {
     const { id } = req.params;
     const movie = getMovie(Number(id))    
 
-    if (movie) {
-      const data = {
-        message: 'Get Detail Resource',
-        data: movie,
-      };
-      return res.status(200).json(data);
-    } else {
+    if (!movie) {
       const data = {
         message: 'Resource Not Found',
       };
       return res.status(404).json(data);
     }
+     
+    const data = {
+      message: 'Get Detail Resource',
+      data: movie,
+    };
+    return res.status(200).json(data);
   }
 }
 
